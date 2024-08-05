@@ -27,6 +27,20 @@ services:
     networks:
       - health-network
 
+  doctor-service:
+    image: doctor-service
+    build: ./DoctorService
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8082:8082"
+    networks:
+      - health-network
+
 networks:
   health-network:
     driver: bridge

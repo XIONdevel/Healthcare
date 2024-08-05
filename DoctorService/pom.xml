@@ -10,18 +10,16 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>patient-service</artifactId>
+    <artifactId>doctor-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>PatientService</name>
     <description>PatientService</description>
     <packaging>jar</packaging>
-
     <properties>
         <java.version>17</java.version>
     </properties>
 
     <dependencies>
-
     </dependencies>
 
     <build>
