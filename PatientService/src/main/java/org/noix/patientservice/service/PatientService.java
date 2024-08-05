@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,33 +24,31 @@ public class PatientService {
 
     public Patient getPatientByPhone(String phone) {
         if (!isStringsValid(phone)) {
-            Optional<Patient> optionalPatient = patientRepository.findByPhone(phone);
-            if (optionalPatient.isEmpty()) {
-                String message = String.format("Patient with phone number: %s not found", phone);
-                logger.warn(message);
-                throw new DataNotFoundException(message);
-            }
-            return optionalPatient.get();
-        } else {
-            logger.warn("Given phone is not valid: {}", phone);
             throw new DataNotValidException("Given phone is not valid: " + phone);
         }
+        return patientRepository
+                .findByPhone(phone)
+                .orElseThrow(() -> new DataNotFoundException("User with given phone not found" + phone));
     }
 
     public Patient getPatientByEmail(String email) {
         if (!isStringsValid(email)) {
-            Optional<Patient> optionalPatient = patientRepository.findByEmail(email);
-            if (optionalPatient.isEmpty()) {
-                String message = String.format("Patient with email: %s not found", email);
-                logger.warn(message);
-                throw new DataNotFoundException(message);
-            }
-            return optionalPatient.get();
-        } else {
-            logger.warn("Given email is not valid: {}", email);
             throw new DataNotValidException("Given email is not valid: " + email);
         }
+        return patientRepository
+                .findByEmail(email)
+                .orElseThrow(() -> new DataNotValidException("Patient with given email not found: " + email));
+    }
 
+    public List<Patient> getAllByFullName(String firstname, String lastname) {
+        if (!isStringsValid(firstname, lastname)) {
+            throw new DataNotValidException("Given name is not valid: " + firstname + " " + lastname);
+        }
+        List<Patient> patients = patientRepository.findAllByFirstnameAndLastname(firstname, lastname);
+        if (patients.isEmpty()) {
+            throw new DataNotFoundException("Patients with given name not found: " + firstname + " " + lastname);
+        }
+        return patients;
     }
 
     private boolean isStringsValid(String... strings) {
