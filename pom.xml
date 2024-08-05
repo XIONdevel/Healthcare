@@ -35,16 +35,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--        <dependency>    for future-->
-<!--            <groupId>org.springframework.kafka</groupId>-->
-<!--            <artifactId>spring-kafka</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>    for future-->
+<!--        <dependency>    for future config server-->
 <!--            <groupId>org.springframework.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-config-server</artifactId>-->
 <!--            <version>${spring.cloud.version}</version>-->
 <!--        </dependency>-->
-
 
         <dependency>
             <groupId>org.postgresql</groupId>
