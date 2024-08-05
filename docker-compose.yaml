@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment: #TODO: change db connection
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+#      - ./database:/var/lib/postgresql
+      - ./db_init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - health-network
+
+  patient-service:
+    image: patient-service
+    build: ./PatientService
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8081:8081"
+    networks:
+      - health-network
+
+networks:
+  health-network:
+    driver: bridge
+
+

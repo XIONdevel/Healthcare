@@ -22,6 +22,9 @@ public class Patient {
     private String firstname;
     private String lastname;
 
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
     @Column(unique = true)
     private String phone;
     @Column(unique = true)

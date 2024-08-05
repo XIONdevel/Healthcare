@@ -48,9 +48,8 @@ public class PatientService {
             logger.warn("Given email is not valid: {}", email);
             throw new DataNotValidException("Given email is not valid: " + email);
         }
+
     }
-
-
 
     private boolean isStringsValid(String... strings) {
         for (String str : strings) {

@@ -12,13 +12,13 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring.boot.version>3.3.2</spring.boot.version>
+        <spring.cloud.version>4.1.3</spring.cloud.version>
     </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>${spring.boot.version}</version>
+        <version>3.3.2</version>
     </parent>
 
     <dependencies>
@@ -30,10 +30,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--        <dependency>-->
+<!--        <dependency>    for future-->
 <!--            <groupId>org.springframework.kafka</groupId>-->
 <!--            <artifactId>spring-kafka</artifactId>-->
 <!--        </dependency>-->
+<!--        <dependency>    for future-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-config-server</artifactId>-->
+<!--            <version>${spring.cloud.version}</version>-->
+<!--        </dependency>-->
+
 
         <dependency>
             <groupId>org.postgresql</groupId>

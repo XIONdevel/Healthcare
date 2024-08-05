@@ -21,13 +21,13 @@ public class HealthRecord {
     private Long id;
 
     @ManyToOne
-    private Patient patientId;
+    private Patient patient;
 
     private String name;
     private String description;
 
     private LocalDate start;
-    private LocalDate end;
+    private LocalDate finish;
 
     private String medications;
 }

@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS patient (
     id BIGSERIAL,
     firstname VARCHAR,
     lastname VARCHAR,
+    gender VARCHAR,
     phone VARCHAR UNIQUE,
     email VARCHAR UNIQUE,
     dob DATE,
